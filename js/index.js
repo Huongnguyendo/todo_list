@@ -39,7 +39,7 @@ const renderTodos = () => {
     .map(
       (item) => `
   <li>${item.content}
-      <div>
+      <div class="buttons">
           <button class="btn deleteBtn" onclick="deleteTask(${item.id})">
               <i class="fa fa-trash"></i>
           </button>
@@ -56,10 +56,13 @@ const renderTodos = () => {
     .map(
       (item) => `
     <li>${item.content}
-        <div>
+        <div class="buttons">
             <button class="btn deleteBtn" onclick="deleteTask(${item.id})">
                 <i class="fa fa-trash"></i>
             </button>
+            <button class="btn completedBtn">
+              <i class="fa fa-check-circle"></i>
+          </button>
         </div>
     </li>
   `
