@@ -1,5 +1,7 @@
+
+
 let todoList = [];
-let completeList = [];
+// let completeList = [];
 let id = 0;
 
 const addTodo = () => {
@@ -15,7 +17,7 @@ const addTodo = () => {
     };
     todoList.push(todoItem);
 
-    console.log(id);
+    saveData();
   }
 
   // clear input field
@@ -24,10 +26,12 @@ const addTodo = () => {
   console.log(todoList);
 
   // render todo list
-  renderTodos();
+  renderTodos(todoList);
 };
 
-const renderTodos = () => {
+console.log("todolist", todoList);
+
+const renderTodos = (todoList) => {
   // clear
   document.getElementById("todoList").innerHTML = "";
   document.getElementById("completeList").innerHTM = "";
@@ -76,19 +80,46 @@ const renderTodos = () => {
 const deleteTask = (id) => {
   //   todoList.splice(index, 1);
 
-  //   console.log("id:", id);
   todoList = todoList.filter((task) => task.id != id);
 
-  renderTodos();
+  renderTodos(todoList);
+  saveData();
 };
 
 const completeTask = (id) => {
-  // tu id tim index
+  // from id find index
   let completedIndex = todoList.findIndex((task) => task.id == id);
-  // sua trang thai
+  // fix status
   todoList[completedIndex].isDone = true;
 
-  console.log(id);
+  // console.log(id);
 
-  renderTodos();
+  renderTodos(todoList);
+  saveData();
 };
+
+const toggleDone = (index) => {
+  todoList[index].isDone = !todoList[index].isDone;
+
+  render(todoList);
+};
+
+const saveData = () => {
+  localStorage.setItem("todoList", JSON.stringify(todoList));
+};
+
+const getData = () => {
+  let data = localStorage.getItem("todoList");
+  data = JSON.parse(data);
+  console.log("getData", data);
+
+  if (data == null) {
+    todoList = [];
+  } else {
+    todoList = data;
+  }
+
+  renderTodos(todoList);
+};
+
+getData();

@@ -14,7 +14,7 @@ body {
 
 .todo-content {
   margin-top: 50px !important;
-  margin-bottom: 20px;
+  margin-bottom: 30px !important;
   text-align: center;
   width: 400px;
   height: auto;
