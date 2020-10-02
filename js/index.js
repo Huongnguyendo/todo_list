@@ -1,5 +1,3 @@
-
-
 let todoList = [];
 // let completeList = [];
 let id = 0;
@@ -36,7 +34,7 @@ const renderTodos = (todoList) => {
   document.getElementById("todoList").innerHTML = "";
   document.getElementById("completeList").innerHTM = "";
 
-  // show Todo list on web browser
+  // show Todo list on browser
   let tempUndoneList = todoList.filter((task) => task.isDone == false);
   let tempDoneList = todoList.filter((task) => task.isDone == true);
   let unDoneHTML = tempUndoneList
@@ -97,11 +95,6 @@ const completeTask = (id) => {
   saveData();
 };
 
-const toggleDone = (index) => {
-  todoList[index].isDone = !todoList[index].isDone;
-
-  render(todoList);
-};
 
 const saveData = () => {
   localStorage.setItem("todoList", JSON.stringify(todoList));
