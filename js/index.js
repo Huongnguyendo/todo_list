@@ -64,7 +64,7 @@ const renderTodos = (todoList) => {
             <button class="btn deleteBtn" onclick="deleteTask(${item.id})">
                 <i class="fa fa-trash"></i>
             </button>
-            <button class="btn completedBtn">
+            <button class="btn completedBtn" onclick="completeTask(${item.id})">
               <i class="fa fa-check-circle"></i>
           </button>
         </div>
@@ -90,9 +90,8 @@ const completeTask = (id) => {
   // from id find index
   let completedIndex = todoList.findIndex((task) => task.id == id);
   // fix status
-  todoList[completedIndex].isDone = true;
-
-  // console.log(id);
+  // todoList[completedIndex].isDone = true;
+  todoList[completedIndex].isDone = !todoList[completedIndex].isDone;
 
   renderTodos(todoList);
   saveData();
